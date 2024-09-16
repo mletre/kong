@@ -26,13 +26,13 @@ kubectl edit deployments -n kong-dev
 ```
 
 - First Add the variable
-![Alt text](./img/variable.jpeg?raw=true "Title")
+- ![Alt text](./img/variable.jpeg?raw=true "Title")
 
-- First Add the variable
-![Alt text](./img/configmap.jpeg?raw=true "Title")
+- First Add the Configmap
+- ![Alt text](./img/configmap.jpeg?raw=true "Title")
 
-- First Add the variable
-![Alt text](./img/mountpoint.jpeg?raw=true "Title")
+- First Add the Mountpoint
+- ![Alt text](./img/mountpoint.jpeg?raw=true "Title")
 
 - After this save the configuration and make new revision deployment
 ```shell
