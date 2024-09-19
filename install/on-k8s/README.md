@@ -31,6 +31,12 @@ pg_host: kong-dev-postgresql.kong-dev.svc.cluster.local
 --
 ```
 
+- Add Helm Repository
+```shell
+helm repo add kong https://charts.konghq.com
+helm repo update
+```
+
 - Lets Install Using Helm 
 ```shell
 helm install kong-dev kong/kong -n kong-dev -f kong-prov-with-db.yaml
