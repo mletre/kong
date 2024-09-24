@@ -1,13 +1,50 @@
 # kong Install in VM Server
 
 
-## Local setup
+## Install With Script [root user]
+
+- Switch to ROOT User
+```shell
+sudo su
+```
+
+- Change to root directory
+```shell
+cd /root
+```
+
+- Install Git
+```shell
+apt install git
+```
+
+- Clone Repository
+```shell
+git clone https://github.com/mletre/kong.git
+```
+
+- Install Git
+```shell
+cd kong/install/on-vm
+```
+
+- Install Git
+```shell
+chmod +x script
+```
+
+- Run Script
+```shell
+./script
+```
+
+## Install Manually
 
 Before your start the configuration you must installed kong in the server by this way. In the tutorial using Debian 12 Bookworm.
 
 - Update & Upgrade the System
 ```shell
-sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt upgrade -y
 ```
 
 - Download DEB Package from the konghq

@@ -1,0 +1,31 @@
+#! /bin/bash
+
+# Kong Installer for debian and ubuntu
+
+#Update & Upgrade System
+echo "Update & Upgrade System\n"
+apt update && apt upgrade -y
+apt install wget git curl postgresql net-tools -y
+#Install Kong
+echo "Install Kong\n"
+curl -Lo kong-3.8.0.deb "https://packages.konghq.com/public/gateway-38/deb/debian/pool/bullseye/main/k/ko/kong_3.8.0/kong_3.8.0_$(dpkg --print-architecture).deb"
+apt install -y ./kong-3.8.0.deb
+cp kong.conf /etc/kong
+echo "Prepare The Database....\n"
+# su - postgres
+# psql -c "CREATE USER kong4 WITH PASSWORD 'super_secret';" -c "CREATE DATABASE kong4 OWNER kong4;"
+su -c "psql -d postgres -c \"CREATE USER kong WITH PASSWORD 'super_secret'\"" postgres
+su -c "psql -d postgres -c \"CREATE DATABASE kong OWNER kong\"" postgres
+# exit
+echo "Start Kong Database Migration....\n"
+kong migrations bootstrap -c /etc/kong/kong.conf
+echo "Start Kong\n"
+kong start -c /etc/kong/kong.conf
+#instalation Done
+netstat -tulpn
+echo "Kong Proxy\n"
+echo "http://localhost:8000"
+echo "Kong Admin API\n"
+echo "http://localhost:8001"
+echo "Kong Manager\n"
+echo "http://localhost:8002"
